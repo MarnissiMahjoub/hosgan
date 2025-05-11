@@ -1,0 +1,45 @@
+<odoo>
+    <data><!-- Action et menu -->
+        <record id="action_bilan" model="ir.actions.act_window">
+            <field name="name">Bilans</field>
+            <field name="res_model">bilan</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p>Créer et gérer les bilans médicaux.</p>
+            </field>
+        </record>
+
+        <menuitem id="menu_bilan_root" name="Bilans" sequence="10"  parent="crm.crm_menu_config" />
+        <menuitem id="menu_bilan" name="Bilans Médicaux" parent="menu_bilan_root" action="action_bilan" sequence="10"/>
+
+        <!-- Vue liste -->
+        <record id="view_bilan_tree" model="ir.ui.view">
+            <field name="name">bilan.tree</field>
+            <field name="model">bilan</field>
+            <field name="arch" type="xml">
+                <tree string="Bilans">
+                    <field name="categorie"/>
+                    <field name="name"/>
+                    <field name="med_active"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vue formulaire -->
+        <record id="view_bilan_form" model="ir.ui.view">
+            <field name="name">bilan.form</field>
+            <field name="model">bilan</field>
+            <field name="arch" type="xml">
+                <form string="Bilan">
+                    <sheet>
+                        <group>
+                            <field name="categorie"/>
+                            <field name="name"/>
+                            <field name="med_active"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

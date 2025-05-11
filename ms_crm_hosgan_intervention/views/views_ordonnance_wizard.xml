@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Vue du wizard -->
+    <record id="view_wizard_ordonnance_form" model="ir.ui.view">
+        <field name="name">wizard.ordonnance.form</field>
+        <field name="model">wizard.ordonnance</field>
+        <field name="arch" type="xml">
+            <form string="Ordonnance">
+                <group>
+                    <field name="partner_id"/>
+                    <field name="date"/>
+                    <field name="operation"/>
+                    <field name="medecin_id"/>
+                </group>
+                <notebook string="Ordonnance">
+                    <page string="Ordonnance">
+                            <field name="ordonnance_line_ids" >
+                                <tree editable="bottom" delete="0">
+                                    <field name="medicament_id" string="Médicament" />
+                                    <field name="done" string="Fait"/>
+                                </tree>
+                            </field>
+                    </page>
+                </notebook>
+
+
+<footer>
+                    <button name="print_ordonnance" type="object" string="Imprimer" class="btn-primary"/>
+                    <button string="Annuler" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>
+

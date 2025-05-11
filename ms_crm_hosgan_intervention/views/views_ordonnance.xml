@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Action pour ouvrir la vue -->
+    <record id="action_ordonnance" model="ir.actions.act_window">
+        <field name="name">Ordonnances</field>
+        <field name="res_model">ordonnance</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>Gérez vos ordonnances ici.</p>
+        </field>
+    </record>
+
+    <!-- Menu principal -->
+    <menuitem id="menu_ordonnance_root" name="Ordonnance" sequence="10"  parent="crm.crm_menu_config"/>
+
+    <!-- Menu secondaire -->
+    <menuitem id="menu_ordonnance" name="Ordonnances" parent="menu_ordonnance_root" action="action_ordonnance"/>
+
+    <record id="view_ordonnance_tree" model="ir.ui.view">
+        <field name="name">ordonnance.tree</field>
+        <field name="model">ordonnance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="number_day"/>
+                <field name="pendant"/>
+                <field name="semaine_jour_mois"/>
+                <field name="med_active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_ordonnance_form" model="ir.ui.view">
+        <field name="name">ordonnance.form</field>
+        <field name="model">ordonnance</field>
+        <field name="arch" type="xml">
+            <form string="Ordonnance">
+                <sheet>
+                    <group>
+                        <field name="med_active"/>
+                        <field name="name"/>
+                        <field name="number_day"/>
+                        <field name="pendant"/>
+                        <field name="semaine_jour_mois"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

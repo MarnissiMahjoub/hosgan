@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_wizard.ordonnance,wizard_ordonnance,model_wizard_ordonnance,base.group_user,1,1,1,1
+access_wizard.ordonnance.line,wizard_ordonnance_line,model_wizard_ordonnance_line,base.group_user,1,1,1,1
+access.ordonnance,wizard_ordonnance,model_ordonnance,base.group_user,1,1,1,1
+access.bilan,wizard_bilan,model_bilan,base.group_user,1,1,1,1

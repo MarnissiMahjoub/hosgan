@@ -1,0 +1,71 @@
+<odoo>
+    <data>
+        <!-- Définition du rapport -->
+        <record id="action_report_ordonnance" model="ir.actions.report">
+            <field name="name">Ordonnance Médicale</field>
+            <field name="model">wizard.ordonnance</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ms_crm_hosgan_intervention.report_ordonnance_template</field>
+            <field name="report_file">ms_crm_hosgan_intervention.report_ordonnance_template</field>
+            <field name="print_report_name">'Ordonnance Médicale - %s' % (object.partner_id.name)</field>
+            <field name="binding_type">report</field>
+        </record>
+
+
+        <!-- Template QWeb pour l'ordonnance -->
+        <template id="report_ordonnance_template">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <!-- Titre -->
+                    <div class="row">
+                        <div class="col-8">
+                            <h3 style="text-align: center;" >
+                                <strong>ORDONNANCE MÉDICALE</strong>
+                            </h3>
+                        </div>
+                        <div class="col-4 text-right">
+                            <p>
+                                <strong>Patient(e) :</strong> <span t-esc="o.partner_id.name"/>
+                            </p>
+                            <p>
+                                <strong>Date :</strong> <span t-esc="o.date"/>
+                            </p>
+                            <p>
+                                <strong>Médecin :</strong> <span t-esc="o.medecin_id.name"/>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Liste des médicaments -->
+                    <h4><strong>Prescription :</strong></h4>
+                    <ul>
+                        <t t-foreach="o.ordonnance_line_ids" t-as="line">
+                            <t t-if="line.done">
+                                <li>
+                                    <strong><t t-esc="line.medicament_id.name"/></strong> :
+                                    <t t-esc="line.medicament_id.number_day"/> fois par jour pendant
+                                    <t t-esc="line.medicament_id.pendant"/>
+                                    <t t-esc="line.medicament_id.semaine_jour_mois"/>
+                                </li>
+                            </t>
+                        </t>
+                    </ul>
+
+                    <!-- Signature -->
+                    <h4 style="margin-top: 40px;">
+                        <strong>Signature du médecin :</strong>
+                    </h4>
+                    <p>
+                        <strong><span t-esc="o.medecin_id.name"/></strong>
+                    </p>
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+
+
+    </data>
+</odoo>

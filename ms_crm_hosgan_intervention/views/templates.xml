@@ -1,0 +1,77 @@
+<odoo>
+    <data>
+
+
+        <!-- Définition du rapport -->
+        <record id="action_report_ordonnance_medicale" model="ir.actions.report">
+            <field name="name">Ordonnance Médicale</field>
+            <field name="model">wizard.ordonnance</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ms_crm_hosgan_intervention.report_ordonnance_medicale_template</field>
+            <field name="report_file">ms_crm_hosgan_intervention.report_ordonnance_medicale_template</field>
+            <field name="print_report_name">'Ordonnance Médicale - %s' % (object.partner_id.name)</field>
+            <field name="binding_type">report</field>
+<!--            <field name="paperformat_id" ref="your_custom_paperformat_id"/>-->
+        </record>
+
+
+
+        <!-- Template QWeb pour l'ordonnance -->
+    <template id="report_ordonnance_medicale_template">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.internal_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+
+                    <!-- Titre -->
+                    <div class="row">
+                        <div class="col-7 text-right">
+                            <h3 style="text-align: center;" ><strong>ORDONNANCE MÉDICALE</strong></h3>
+                        </div>
+                        <div class="col-1"></div>
+                        <div class="col-4 text-right m-l-2">
+                            <p><strong>Patient(e) :</strong> <span t-esc="o.partner_id.name"/></p>
+                            <p><strong>Date :</strong> <span t-esc="o.date"/></p>
+                            <p><strong>Intervention :</strong> Blepharoplastie</p>
+                        </div>
+                    </div>
+
+                    <!-- Prescription -->
+                    <h4><strong>Prescrit :</strong></h4>
+                    <ul>
+                        <li>
+                            <strong>Retrait des points de suture</strong>
+                            <ul>
+                                <li>À effectuer <t t-esc="o.days_number"/> jours après la date de l’intervention chirurgicale.</li>
+                                <li>Réalisé par un personnel médical qualifié ou un(e) infirmier(e) dans un cabinet médical.</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <!-- Remarques supplémentaires -->
+                    <h4><strong>Remarques supplémentaires :</strong></h4>
+                    <ul>
+                        <li>Vérifier que la plaie est bien cicatrisée avant le retrait.</li>
+                        <li>Maintenir la zone propre et suivre les consignes post-retrait fournies par le personnel médical.</li>
+                    </ul>
+
+                    <!-- Signature du médecin -->
+
+                    <p><strong><span t-esc="o.medecin_id.name"/></strong></p>
+                    <h4><strong>Signature du médecin :</strong></h4>
+
+                    <!-- Footer -->
+                    <div class="footer" style="border-top: 1px solid #dee2e6; padding-top: 10px;">
+                        <div class="text-left" style="margin-left: 20px;">
+                            <span>Page <span class="page"/> / <span class="topage"/></span>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+
+    </data>
+</odoo>

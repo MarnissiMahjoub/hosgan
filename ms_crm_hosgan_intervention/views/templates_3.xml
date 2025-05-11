@@ -1,0 +1,88 @@
+<odoo>
+    <data>
+
+        <!-- Action du rapport Bilan -->
+        <record id="action_report_bilan" model="ir.actions.report">
+            <field name="name">Bilan Médical</field>
+            <field name="model">wizard.ordonnance</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ms_crm_hosgan_intervention.report_bilan_template</field>
+            <field name="report_file">ms_crm_hosgan_intervention.report_bilan_template</field>
+            <field name="print_report_name">'Bilan Médical'</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Template du rapport bilan -->
+        <template id="report_bilan_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+
+                            <!-- En-tête -->
+                            <div class="row">
+                                <div class="col-8">
+                                    <h3 style="text-align: center;">
+    <strong>BILAN MÉDICAL</strong>
+</h3>
+
+                                    <p>
+                                        <strong>Patient(e) :</strong>
+                                        <span t-esc="o.partner_id.name"></span>
+                                    </p>
+                                    <p>
+                                        <strong>Date :</strong>
+                                        <span t-esc="o.date"></span>
+                                    </p>
+                                    <p>
+                                        <strong>Médecin :</strong>
+                                        <span t-esc="o.medecin_id.name"></span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Détails des lignes -->
+                            <t t-if="o.ordonnance_line_ids">
+                                <h4>
+                                    <strong>Détails :</strong>
+                                </h4>
+                                <ul>
+                                    <!-- Boucle sur les catégories distinctes -->
+                                    <t t-foreach="o.ordonnance_line_ids.mapped('bilan_id.categorie')" t-as="category">
+                                        <li>
+                                            <strong>
+                                                <span t-esc="category"/>
+                                            </strong>
+                                            <ul>
+                                                <!-- Boucle sur les lignes correspondant à la catégorie actuelle -->
+                                                <t t-foreach="o.ordonnance_line_ids.filtered(lambda l: l.bilan_id.categorie == category)"
+                                                   t-as="line">
+                                                    <t t-if="line.done">
+                                                        <li>
+                                                            <span t-esc="line.bilan_id.name"/>
+                                                        </li>
+                                                    </t>
+                                                </t>
+                                            </ul>
+                                        </li>
+                                    </t>
+                                </ul>
+                            </t>
+
+
+                          <!-- Signature -->
+                    <h4 style="margin-top: 40px;">
+                        <strong>Signature du médecin :</strong>
+                    </h4>
+                    <p>
+                        <strong><span t-esc="o.medecin_id.name"/></strong>
+                    </p>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
