@@ -42,32 +42,30 @@
                             </div>
 
                             <!-- Détails des lignes -->
-                            <t t-if="o.ordonnance_line_ids">
-                                <h4>
-                                    <strong>Détails :</strong>
-                                </h4>
-                                <ul>
-                                    <!-- Boucle sur les catégories distinctes -->
-                                    <t t-foreach="o.ordonnance_line_ids.mapped('bilan_id.categorie')" t-as="category">
-                                        <li>
-                                            <strong>
-                                                <span t-esc="category"/>
-                                            </strong>
-                                            <ul>
-                                                <!-- Boucle sur les lignes correspondant à la catégorie actuelle -->
-                                                <t t-foreach="o.ordonnance_line_ids.filtered(lambda l: l.bilan_id.categorie == category)"
-                                                   t-as="line">
-                                                    <t t-if="line.done">
-                                                        <li>
-                                                            <span t-esc="line.bilan_id.name"/>
-                                                        </li>
-                                                    </t>
-                                                </t>
-                                            </ul>
-                                        </li>
-                                    </t>
-                                </ul>
-                            </t>
+<t t-if="o.ordonnance_line_ids">
+    <h4><strong>Détails :</strong></h4>
+
+    <!-- Étape 1 : extraire les lignes validées -->
+    <t t-set="done_lines" t-value="o.ordonnance_line_ids.filtered(lambda l: l.done)"/>
+
+    <!-- Étape 2 : extraire les catégories distinctes à partir des bilans validés -->
+    <t t-set="categories" t-value="list(set(done_lines.mapped('bilan_id.categorie')))"/>
+
+    <ul>
+        <!-- Étape 3 : boucle sur chaque catégorie -->
+        <t t-foreach="categories" t-as="category">
+            <li>
+                <strong><span t-esc="category if category else 'Sans catégorie'"/></strong>
+                <ul>
+                    <!-- Étape 4 : afficher les bilans associés à cette catégorie -->
+                    <t t-foreach="done_lines.filtered(lambda l: l.bilan_id.categorie == category)" t-as="line">
+                        <li><span t-esc="line.bilan_id.name"/></li>
+                    </t>
+                </ul>
+            </li>
+        </t>
+    </ul>
+</t>
 
 
                           <!-- Signature -->

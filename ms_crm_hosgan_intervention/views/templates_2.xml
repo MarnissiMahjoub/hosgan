@@ -13,28 +13,31 @@
 
 
         <!-- Template QWeb pour l'ordonnance -->
-        <template id="report_ordonnance_template">
+<template id="report_ordonnance_template">
     <t t-call="web.html_container">
         <t t-foreach="docs" t-as="o">
+            <!-- Héritage du layout avec en-tête et pied de page -->
             <t t-call="web.external_layout">
                 <div class="page">
+
                     <!-- Titre -->
-                    <div class="row">
-                        <div class="col-8">
-                            <h3 style="text-align: center;" >
-                                <strong>ORDONNANCE MÉDICALE</strong>
-                            </h3>
+                    <div class="row mb-4">
+                        <div class="col-12 text-center">
+                                                                <h3 style="text-align: center;">
+    <strong>ORDONNANCE MÉDICALE</strong>
+</h3>
+
                         </div>
-                        <div class="col-4 text-right">
-                            <p>
-                                <strong>Patient(e) :</strong> <span t-esc="o.partner_id.name"/>
-                            </p>
-                            <p>
-                                <strong>Date :</strong> <span t-esc="o.date"/>
-                            </p>
-                            <p>
-                                <strong>Médecin :</strong> <span t-esc="o.medecin_id.name"/>
-                            </p>
+                    </div>
+
+                    <!-- Informations Patient / Médecin -->
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <p><strong>Patient(e) :</strong> <span t-esc="o.partner_id.name"/></p>
+                            <p><strong>Date :</strong> <span t-esc="o.date"/></p>
+                        </div>
+                        <div class="col-6 text-right">
+                            <p><strong>Médecin :</strong> <span t-esc="o.medecin_id.name"/></p>
                         </div>
                     </div>
 
@@ -44,10 +47,11 @@
                         <t t-foreach="o.ordonnance_line_ids" t-as="line">
                             <t t-if="line.done">
                                 <li>
-                                    <strong><t t-esc="line.medicament_id.name"/></strong> :
-                                    <t t-esc="line.medicament_id.number_day"/> fois par jour pendant
-                                    <t t-esc="line.medicament_id.pendant"/>
-                                    <t t-esc="line.medicament_id.semaine_jour_mois"/>
+                                    <strong><span t-esc="line.medicament_id.name"/></strong> :
+                                    <span t-esc="line.medicament_id.number_day"/> fois par jour pendant
+                                    <span t-esc="line.medicament_id.pendant"/>
+                                    <span t-esc="line.medicament_id.semaine_jour_mois"/>
+                                    <span t-esc="line.medicament_id.note"/>
                                 </li>
                             </t>
                         </t>
@@ -57,9 +61,8 @@
                     <h4 style="margin-top: 40px;">
                         <strong>Signature du médecin :</strong>
                     </h4>
-                    <p>
-                        <strong><span t-esc="o.medecin_id.name"/></strong>
-                    </p>
+                    <p><strong><span t-esc="o.medecin_id.name"/></strong></p>
+
                 </div>
             </t>
         </t>

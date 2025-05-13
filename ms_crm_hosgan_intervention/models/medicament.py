@@ -12,6 +12,7 @@ class Ordonnance(models.Model):
     number_day = fields.Integer(string="Nombre de fois par jour")
     pendant = fields.Integer(string="Pendant")
     semaine_jour_mois = fields.Selection([('jour', 'Jour'),('semaine', 'Semaine'),('mois', 'Mois'),],string="Unité de temps" )
+    note = fields.Char("Note")
 
 
 class Bilan(models.Model):
