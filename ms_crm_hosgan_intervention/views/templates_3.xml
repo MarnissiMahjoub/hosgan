@@ -8,7 +8,7 @@
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">ms_crm_hosgan_intervention.report_bilan_template</field>
             <field name="report_file">ms_crm_hosgan_intervention.report_bilan_template</field>
-            <field name="print_report_name">'Bilan Médical'</field>
+            <field name="print_report_name">'Bilan Médical- %s' % (object.partner_id.name)</field>
             <field name="binding_type">report</field>
         </record>
 
@@ -18,66 +18,72 @@
                 <t t-foreach="docs" t-as="o">
                     <t t-call="web.external_layout">
                         <div class="page">
+                            <div class="oe_structure"/>
 
                             <!-- En-tête -->
-                            <div class="row">
-                                <div class="col-8">
-                                    <h3 style="text-align: center;">
-    <strong>ORDONNANCE MÉDICALE</strong>
-</h3>
+                            <div class="text-center mb-3">
+                                <h3>
+                                    <strong>ORDONNANCE MÉDICALE</strong>
+                                </h3>
+                                <br/>
+                            </div>
 
+                            <!-- Informations Patient / Médecin -->
+                            <div class="row mb-4">
+                                <div class="col-6">
                                     <p>
                                         <strong>Patient(e) :</strong>
-                                        <span t-esc="o.partner_id.name"></span>
+                                        <span t-esc="o.partner_id.name"/>
                                     </p>
                                     <p>
                                         <strong>Date :</strong>
-                                        <span t-esc="o.date"></span>
+                                        <span t-esc="o.date"/>
                                     </p>
+                                </div>
+                                <div class="col-6">
                                     <p>
                                         <strong>Médecin :</strong>
-                                        <span t-esc="o.medecin_id.name"></span>
+                                        <span t-esc="o.medecin_id.name"/>
                                     </p>
                                 </div>
                             </div>
 
                             <!-- Détails des lignes -->
                             <t t-if="o.ordonnance_line_ids">
-<!--                                <ul>-->
-                                    <!-- Boucle sur les catégories distinctes -->
-<t t-if="o.ordonnance_line_ids">
-    <!-- Étape 1 : extraire les lignes validées -->
-    <t t-set="done_lines" t-value="o.ordonnance_line_ids.filtered(lambda l: l.done)"/>
+                                <t t-set="done_lines" t-value="o.ordonnance_line_ids.filtered(lambda l: l.done)"/>
+                                <t t-set="categories" t-value="list(set(done_lines.mapped('bilan_id.categorie')))"/>
 
-    <!-- Étape 2 : extraire les catégories distinctes à partir des bilans validés -->
-    <t t-set="categories" t-value="list(set(done_lines.mapped('bilan_id.categorie')))"/>
+                                <div class="mb-4">
+                                    <ul style="list-style-type: none; padding-left: 0;">
+                                        <t t-foreach="categories" t-as="category">
+                                            <li class="mb-2">
+                                                <strong>
 
-    <ul>
-        <!-- Étape 3 : boucle sur chaque catégorie -->
-        <t t-foreach="categories" t-as="category">
-            <li>
-                <strong><span t-esc="category if category else 'Sans catégorie'"/></strong>
-                <ul>
-                    <!-- Étape 4 : afficher les bilans associés à cette catégorie -->
-                    <t t-foreach="done_lines.filtered(lambda l: l.bilan_id.categorie == category)" t-as="line">
-                        <li><span t-esc="line.bilan_id.name"/></li>
-                    </t>
-                </ul>
-            </li>
-        </t>
-    </ul>
-</t>
-<!--                                </ul>-->
+                                                        <span t-esc="category if category else 'Sans catégorie'"/>
+
+                                                </strong>
+                                                <ul style="margin-left: 15px;">
+                                                    <t t-foreach="done_lines.filtered(lambda l: l.bilan_id.categorie == category)"
+                                                       t-as="line">
+                                                        <li>
+                                                            <span t-esc="line.bilan_id.name"/>
+                                                        </li>
+                                                    </t>
+                                                </ul>
+                                            </li>
+                                        </t>
+                                    </ul>
+                                </div>
                             </t>
 
-
-                          <!-- Signature -->
-                    <p style="margin-top: 40px;">
-                        <strong>Signature du médecin :</strong>
-                    </p>
-<!--                    <p>-->
-<!--                        <strong><span t-esc="o.medecin_id.name"/></strong>-->
-<!--                    </p>-->
+                            <!-- Signature -->
+                            <div class="mt-5">
+                                <p>
+                                    <strong>Signature du médecin :</strong>
+                                </p>
+                                <img t-att-src="'/ms_crm_hosgan_intervention/static/src/img/hosgan_cachet.png'"
+                                      style="width:300px; height:300px;"/>
+                            </div>
 
                         </div>
                     </t>

@@ -19,19 +19,20 @@
         <template id="report_ordonnance_medicale_template">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
-                    <t t-call="web.internal_layout">
+                    <t t-call="web.external_layout">
                         <div class="page">
                             <div class="oe_structure"/>
 
                             <!-- Titre -->
-                            <div class="row">
-                                <div class="col-7 text-right">
-                                    <h3 style="text-align: center;">
-                                        <strong>ORDONNANCE MÉDICALE</strong>
-                                    </h3>
-                                </div>
-                                <div class="col-1"></div>
-                                <div class="col-4 text-right m-l-2">
+                            <div class="text-center mb-3">
+                                <h3>
+                                    <strong>ORDONNANCE MÉDICALE</strong>
+                                </h3>
+                                <br/>
+                            </div>
+                            <!--                                <div class="col-1"></div>-->
+                            <div class="row mb-4">
+                                <div class="col-6">
                                     <p>
                                         <strong>Patient(e) :</strong>
                                         <span t-esc="o.partner_id.name"/>
@@ -40,9 +41,11 @@
                                         <strong>Date :</strong>
                                         <span t-esc="o.date"/>
                                     </p>
+                                </div>
+                                <div class="col-6">
                                     <p>
                                         <strong>Intervention :</strong>
-                                        Blepharoplastie
+                                        <span t-esc="o.operation"/>
                                     </p>
                                     <p>
                                         <strong>Médecin :</strong>
@@ -50,6 +53,8 @@
                                     </p>
                                 </div>
                             </div>
+                            <br/>
+                            <br/>
 
                             <t t-if="o.categorie != 'Enlever les points des suture'">
                                 <p>
@@ -113,9 +118,11 @@
 
                             <!-- Signature du médecin -->
                             <div style="margin-top: 30px;">
-    <strong>Signature du médecin :</strong><br/>
-<img t-att-src="'/ms_crm_hosgan_intervention/static/src/img/hosgan_cachet.png'" />
-</div>
+                                <strong>Signature du médecin :</strong>
+                                <br/>
+                                <img t-att-src="'/ms_crm_hosgan_intervention/static/src/img/hosgan_cachet.png'"
+                                     style="width:300px; height:300px;"/>
+                            </div>
 
                         </div>
                     </t>

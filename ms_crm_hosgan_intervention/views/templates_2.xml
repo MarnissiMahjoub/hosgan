@@ -19,25 +19,32 @@
             <t t-call="web.external_layout">
                 <div class="page">
                     <!-- Titre -->
-                    <div class="row">
-                        <div class="col-8">
-                            <h3 style="text-align: center;" >
-                                <strong>ORDONNANCE MÉDICALE</strong>
-                            </h3>
-                        </div>
-                        <div class="col-4 text-right">
-                            <p>
-                                <strong>Patient(e) :</strong> <span t-esc="o.partner_id.name"/>
-                            </p>
-                            <p>
-                                <strong>Date :</strong> <span t-esc="o.date"/>
-                            </p>
-                            <p>
-                                <strong>Médecin :</strong> <span t-esc="o.medecin_id.name"/>
-                            </p>
-                        </div>
-                    </div>
+                            <div class="text-center mb-3">
+                                <h3>
+                                    <strong>ORDONNANCE MÉDICALE</strong>
+                                </h3>
+                                <br/>
+                            </div>
 
+                            <!-- Informations Patient / Médecin -->
+                            <div class="row mb-4">
+                                <div class="col-6">
+                                    <p>
+                                        <strong>Patient(e) :</strong>
+                                        <span t-esc="o.partner_id.name"/>
+                                    </p>
+                                    <p>
+                                        <strong>Date :</strong>
+                                        <span t-esc="o.date"/>
+                                    </p>
+                                </div>
+                                <div class="col-6">
+                                    <p>
+                                        <strong>Médecin :</strong>
+                                        <span t-esc="o.medecin_id.name"/>
+                                    </p>
+                                </div>
+                            </div>
                     <!-- Liste des médicaments -->
                     <p><strong>Prescription :</strong></p>
                     <ul>
@@ -54,12 +61,15 @@
                     </ul>
 
 
-                    <p style="margin-top: 40px;">
-                        <strong>Signature du médecin :</strong>
-                    </p>
-                    <p>
-                        <strong><span t-esc="o.medecin_id.name"/></strong>
-                    </p>
+                    <!-- Signature -->
+                            <div class="mt-5">
+                                <p>
+                                    <strong>Signature du médecin :</strong>
+                                </p>
+                                <img t-att-src="'/ms_crm_hosgan_intervention/static/src/img/hosgan_cachet.png'"
+                                      style="width:300px; height:300px;"/>
+                            </div>
+
                 </div>
             </t>
         </t>

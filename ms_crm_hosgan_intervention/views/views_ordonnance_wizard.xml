@@ -15,7 +15,7 @@
                 <notebook string="Ordonnance">
                     <page string="Ordonnance">
                             <field name="ordonnance_line_ids" >
-                                <tree editable="bottom" delete="0">
+                                <tree editable="bottom" delete="0" create="0">
                                     <field name="medicament_id" string="Médicament" />
                                     <field name="done" string="Fait"/>
                                 </tree>
