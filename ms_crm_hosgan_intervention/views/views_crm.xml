@@ -10,10 +10,10 @@
                         <field name="intervention_number" widget="statinfo" string="Hosgan Intervention"/>
                     </button>
 
-                    <button name="wizard_ordonnance_medicament" string ="Ordonnance Medicale (Medicament)" type="object" class="oe_stat_button" icon="fa-tags"/>
+                    <button name="wizard_ordonnance_medicament" string ="Ordonnance Medicament" type="object" class="oe_stat_button" icon="fa-tags"/>
 
                     <button name="wizard_ordonnance_medicale" string ="Ordonnance Medicale" type="object" class="oe_stat_button" icon="fa-tags"/>
-                    <button name="wizard_bilan" string="Bilans PRÉ-OPÉRATOIRES" type="object" class="oe_stat_button" icon="fa-tags"/>
+                    <button name="wizard_bilan" string ="BILANS PRE OPERATOIRES" type="object" class="oe_stat_button" icon="fa-tags"/>
                 </xpath>
             </field>
         </record>

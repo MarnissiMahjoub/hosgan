@@ -17,6 +17,14 @@ class WizardOrdonnance(models.Model):
     days_number = fields.Integer("Nombre de jours")
     medecin_id = fields.Many2one('res.partner', string='Médecin')
 
+    categorie = fields.Selection([
+        ('Examens radiologiques', 'Examens radiologiques'),
+        ('Chirurgie bariatrique', 'Chirurgie bariatrique'),
+        ('Traitement de Tardyferon 80', 'Traitement de Tardyferon 80'),
+        ('Drainage lymphatique', 'Drainage lymphatique'),
+        ('Enlever les points des suture', 'Enlever les points des suture'),
+    ], string="Ordonnance médicale pour")
+
     def print_ordonnance(self):
         if not self.id:
             raise ValueError("Aucun wizard d'ordonnance trouvé.")

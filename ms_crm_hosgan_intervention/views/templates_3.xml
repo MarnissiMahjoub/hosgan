@@ -23,7 +23,7 @@
                             <div class="row">
                                 <div class="col-8">
                                     <h3 style="text-align: center;">
-    <strong>BILAN MÉDICAL</strong>
+    <strong>ORDONNANCE MÉDICALE</strong>
 </h3>
 
                                     <p>
@@ -42,9 +42,10 @@
                             </div>
 
                             <!-- Détails des lignes -->
+                            <t t-if="o.ordonnance_line_ids">
+<!--                                <ul>-->
+                                    <!-- Boucle sur les catégories distinctes -->
 <t t-if="o.ordonnance_line_ids">
-    <h4><strong>Détails :</strong></h4>
-
     <!-- Étape 1 : extraire les lignes validées -->
     <t t-set="done_lines" t-value="o.ordonnance_line_ids.filtered(lambda l: l.done)"/>
 
@@ -66,15 +67,17 @@
         </t>
     </ul>
 </t>
+<!--                                </ul>-->
+                            </t>
 
 
                           <!-- Signature -->
-                    <h4 style="margin-top: 40px;">
+                    <p style="margin-top: 40px;">
                         <strong>Signature du médecin :</strong>
-                    </h4>
-                    <p>
-                        <strong><span t-esc="o.medecin_id.name"/></strong>
                     </p>
+<!--                    <p>-->
+<!--                        <strong><span t-esc="o.medecin_id.name"/></strong>-->
+<!--                    </p>-->
 
                         </div>
                     </t>

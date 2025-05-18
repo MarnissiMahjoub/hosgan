@@ -42,7 +42,6 @@
                         <field name="number_day"/>
                         <field name="pendant"/>
                         <field name="semaine_jour_mois"/>
-                        <field name="note"/>
                     </group>
                 </sheet>
             </form>

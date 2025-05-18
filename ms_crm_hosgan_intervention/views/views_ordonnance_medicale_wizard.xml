@@ -12,6 +12,7 @@
                     <field name="operation"/>
                     <field name="days_number"/>
                     <field name="medecin_id"/>
+                    <field name="categorie"/>
 
                 </group>
                 <footer>

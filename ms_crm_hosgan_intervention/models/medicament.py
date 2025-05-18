@@ -12,7 +12,6 @@ class Ordonnance(models.Model):
     number_day = fields.Integer(string="Nombre de fois par jour")
     pendant = fields.Integer(string="Pendant")
     semaine_jour_mois = fields.Selection([('jour', 'Jour'),('semaine', 'Semaine'),('mois', 'Mois'),],string="Unité de temps" )
-    note = fields.Char("Note")
 
 
 class Bilan(models.Model):
@@ -20,11 +19,10 @@ class Bilan(models.Model):
     _description = "Bilan"
     _order = 'categorie'
     categorie = fields.Selection([
-        ('BILAN BIOLOGIQUE', 'BILAN BIOLOGIQUE'),
-        ( 'EXAMENS CARDIAQUES','EXAMENS CARDIAQUES'),
-        ('BILAN BIOLOGIQUE CHIRURGIE BARIATRIQUE','BILAN BIOLOGIQUE CHIRURGIE BARIATRIQUE'),
-        ( 'ESAME BIOLOGICO','ESAME BIOLOGICO'),
-        ('ESAMI RADIOLOGICI','ESAMI RADIOLOGICI'),
+        ('Bilan biologique', 'Bilan biologique'),
+        ('Examens radiologiques', 'Examens radiologiques'),
+        ('Examens cardiaques', 'Examens cardiaques'),
+        ('Bilan biologique chirurgie bariatrique', 'Bilan biologique chirurgie bariatrique'),
     ], string="Type de Bilan")
 
     name = fields.Char(string="Nom du Bilan",required=True)

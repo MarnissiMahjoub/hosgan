@@ -36,7 +36,7 @@ class CrmLead(models.Model):
             medicament_list.append((0, 0, {"ordonnance_id": self.env.context.get('active_id'), "medicament_id": record.id, "done": False}))
 
         return {
-            "name": "Ordonnance Medicale (Medicament)",
+            "name": "Ordonnance Medicament",
 
             "type": "ir.actions.act_window",
             "res_model": "wizard.ordonnance",
@@ -58,7 +58,7 @@ class CrmLead(models.Model):
             bilan_list.append((0, 0, {"ordonnance_id": self.env.context.get('active_id'), "bilan_id": record.id, "done": False}))
 
         return {
-            "name": "Bilans PRÉ-OPÉRATOIRES",
+            "name": "BILANS PRE OPERATOIRES",
 
             "type": "ir.actions.act_window",
             "res_model": "wizard.ordonnance",
