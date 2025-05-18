@@ -13,10 +13,10 @@
                     <field name="days_number"/>
                     <field name="medecin_id"/>
                     <field name="categorie"/>
-
                 </group>
                 <footer>
                     <button name="print_ordonnance_medicale" type="object" string="Imprimer" class="btn-primary"/>
+                    <button name="print_and_send_ordonnance_medicale" type="object"  string="Imprimer et Envoyer" class="btn-primary"/>
                     <button string="Annuler" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>

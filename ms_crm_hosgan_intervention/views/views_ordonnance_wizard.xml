@@ -26,6 +26,7 @@
 
 <footer>
                     <button name="print_ordonnance" type="object" string="Imprimer" class="btn-primary"/>
+                    <button name="print_and_send_ordonnance" type="object" string="Imprimer et Envoyer" class="btn-primary"/>
                     <button string="Annuler" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>
