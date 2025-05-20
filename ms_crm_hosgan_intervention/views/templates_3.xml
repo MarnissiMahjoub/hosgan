@@ -12,16 +12,19 @@
             <field name="binding_type">report</field>
         </record>
 
+
         <!-- Template du rapport bilan -->
         <template id="report_bilan_template">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
-                    <t t-call="web.external_layout">
+                    <t t-call="web.internal_layout">
                         <div class="page">
                             <div class="oe_structure"/>
 
                             <!-- En-tête -->
                             <div class="text-center mb-3">
+                                                                <br></br>
+
                                 <h3>
                                     <strong>ORDONNANCE MÉDICALE</strong>
                                 </h3>
@@ -59,7 +62,7 @@
                                             <li class="mb-2">
                                                 <strong>
 
-                                                        <span t-esc="category if category else 'Sans catégorie'"/>
+                                                    <span t-esc="category if category else 'Sans catégorie'"/>
 
                                                 </strong>
                                                 <ul style="margin-left: 15px;">
@@ -82,7 +85,7 @@
                                     <strong>Signature du médecin :</strong>
                                 </p>
                                 <img t-att-src="'/ms_crm_hosgan_intervention/static/src/img/hosgan_cachet.png'"
-                                      style="width:300px; height:300px;"/>
+                                     style="width:300px; height:300px;"/>
                             </div>
 
                         </div>

@@ -14,12 +14,13 @@
 
         <!-- Template QWeb pour l'ordonnance -->
         <template id="report_ordonnance_template">
-    <t t-call="web.html_container">
-        <t t-foreach="docs" t-as="o">
-            <t t-call="web.external_layout">
-                <div class="page">
-                    <!-- Titre -->
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                        <div class="page">
+                            <!-- Titre -->
                             <div class="text-center mb-3">
+                                <br></br>
                                 <h3>
                                     <strong>ORDONNANCE MÉDICALE</strong>
                                 </h3>
@@ -45,36 +46,57 @@
                                     </p>
                                 </div>
                             </div>
-                    <!-- Liste des médicaments -->
-                    <p><strong>Prescription :</strong></p>
-                    <ul>
-                        <t t-foreach="o.ordonnance_line_ids" t-as="line">
-                            <t t-if="line.done">
-                                <li>
-                                    <strong><t t-esc="line.medicament_id.name"/></strong> :
-                                    <t t-esc="line.medicament_id.number_day"/> fois par jour pendant
-                                    <t t-esc="line.medicament_id.pendant"/>
-                                    <t t-esc="line.medicament_id.semaine_jour_mois"/>
-                                </li>
-                            </t>
-                        </t>
-                    </ul>
+                            <!-- Liste des médicaments -->
+                            <p>
+                                <strong>Prescription :</strong>
+                            </p>
+                            <ul>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <table class="table table-borderless" cellspacing="0">
+                                            <t t-foreach="o.ordonnance_line_ids" t-as="line">
+                                                <t t-if="line.done">
+                                                    <tr>
+                                                        <td style="padding: 0;">
+                                                            <li>
+                                                                                                                            <strong>
+                                                                <t t-esc="line.medicament_id.name"/>
+                                                            </strong>
+
+                                                            </li>
+                                                        </td>
+                                                        <td style="padding: 0;">
+                                                            <t t-esc="line.medicament_id.number_day"/>
+                                                            fois par jour
+                                                        </td>
+                                                        <td style="padding: 0;">
+                                                            pendant
+                                                            <t t-esc="line.medicament_id.pendant"/>
+                                                            <t t-esc="line.medicament_id.semaine_jour_mois"/>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                            </t>
+                                        </table>
+                                    </div>
+                                </div>
+                            </ul>
 
 
-                    <!-- Signature -->
+                            <!-- Signature -->
                             <div class="mt-5">
                                 <p>
                                     <strong>Signature du médecin :</strong>
                                 </p>
                                 <img t-att-src="'/ms_crm_hosgan_intervention/static/src/img/hosgan_cachet.png'"
-                                      style="width:300px; height:300px;"/>
+                                     style="width:300px; height:300px;"/>
                             </div>
 
-                </div>
+                        </div>
+                    </t>
+                </t>
             </t>
-        </t>
-    </t>
-</template>
+        </template>
 
 
     </data>
