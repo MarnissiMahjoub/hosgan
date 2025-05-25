@@ -26,6 +26,7 @@
                             <!-- Titre -->
                             <div class="text-center mb-3">
                                 <br></br>
+                                <br></br>
                                 <h3>
                                     <strong>ORDONNANCE MÉDICALE</strong>
                                 </h3>
@@ -94,6 +95,8 @@
                                 </p>
                                 <ul>
                                     <li>Retrait des points de suture
+                                        <br/>
+                                        <br/>
                                         <ul>
                                             <li>À effectuer
                                                 <t t-esc="o.days_number"/>
