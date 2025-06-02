@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Action pour ouvrir la vue Interventien Tags -->
+    <record id="action_interventien_tags" model="ir.actions.act_window">
+        <field name="name">Intervention</field>
+        <field name="res_model">interventien.tags</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>Gérez les tags d’intervention ici.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_interventien_tags_root" name="Intervention" sequence="20" parent="crm.crm_menu_config"/>
+
+    <menuitem id="menu_interventien_tags" name="Intervention"
+              parent="menu_interventien_tags_root" action="action_interventien_tags"/>
+
+    <!-- Vue tree -->
+    <record id="view_interventien_tags_tree" model="ir.ui.view">
+        <field name="name">interventien.tags.tree</field>
+        <field name="model">interventien.tags</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="categorie"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vue form -->
+    <record id="view_interventien_tags_form" model="ir.ui.view">
+        <field name="name">interventien.tags.form</field>
+        <field name="model">interventien.tags</field>
+        <field name="arch" type="xml">
+            <form string="Tag d’intervention">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="categorie"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="crm_lead_view_form_inherti_ms_1" model="ir.ui.view">
+        <field name="name">crm.lead.view.form.inherit.website.crm.ms.1</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/group/group/field[@name='partner_name']" position="after">
+                <field name="interventien_tags_ids" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

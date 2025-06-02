@@ -3,6 +3,26 @@ from odoo.osv import expression
 from odoo import models, fields
 
 
+class InterventienTags(models.Model):
+    _name="interventien.tags"
+    _description = "name"
+    _order = 'name'
+
+    name = fields.Char("Nom" ,translate=True)
+    categorie = fields.Selection([
+        ('seins', 'SEINS'),
+        ('corps', 'CORPS'),
+        ('visage', 'VISAGE'),
+        ('chirurgie_intimes', 'CHIRURGIE INTIMES'),
+        ('greffes_cheveux', 'GREFFES DE CHEVEUX'),
+        ('chirurgie_bariatrique', 'CHIRURGIE BARIATRIQUE'),
+        ('ophtalmologie', 'OPHTALMOLOGIE'),
+        ('chirurgie_dentaire', 'CHIRURGIE DENTAIRE'),
+        ('medecine_esthetique', 'MEDECINE ESTHETIQUE'),
+        ('tecnologie', 'TECNOLOGIE'),
+    ], string="Catégorie")
+
+
 class CrmLead(models.Model):
     _inherit = "crm.lead"
 
@@ -12,6 +32,12 @@ class CrmLead(models.Model):
                 record.intervention_number = len(record.interventien_id or [])
 
     interventien_id = fields.One2many("x_hosgan_intervention","x_studio_many2one_field_61b_1i8f40cvb")
+
+    interventien_tags_ids = fields.Many2many(
+        "interventien.tags",
+        "crm_id",  # champ Many2one dans l'enfant
+        string="Tags d’intervention"
+    )
 
     intervention_number = fields.Integer("Nombre d'intervention",compute="intervention_numer")
 

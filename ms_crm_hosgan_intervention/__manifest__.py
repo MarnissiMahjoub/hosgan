@@ -25,6 +25,7 @@ Long description of module's purpose
         'security/ir.model.access.csv',
         'views/views_crm.xml',
         'views/view_bilan.xml',
+        'views/intervention.xml',
         'views/views_ordonnance_medicale_wizard.xml',
         'views/views_ordonnance_wizard.xml',
         'views/views_bilan_wizard.xml',

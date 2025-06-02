@@ -3,3 +3,5 @@ access_wizard.ordonnance,wizard_ordonnance,model_wizard_ordonnance,base.group_us
 access_wizard.ordonnance.line,wizard_ordonnance_line,model_wizard_ordonnance_line,base.group_user,1,1,1,1
 access.ordonnance,wizard_ordonnance,model_ordonnance,base.group_user,1,1,1,1
 access.bilan,wizard_bilan,model_bilan,base.group_user,1,1,1,1
+access.interventien.tags,interventien_tags,model_interventien_tags,base.group_user,1,1,1,1
+
