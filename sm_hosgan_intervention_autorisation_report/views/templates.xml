@@ -145,7 +145,6 @@
                     <t t-call="web.internal_layout">
                         <div class="page">
 
-                            <h2 style="text-align: center;">HOSGAN CHIRURGIE ESTHÉTIQUE</h2>
                             <p style="text-align: right;">Date :
 
                             </p>
