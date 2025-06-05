@@ -99,7 +99,7 @@ class sm_hosgan_intervention_autorisation_report(models.Model):
 
         # Générer l’URL publique (facultatif si tu n’utilises pas dans l’email)
         self.write({
-            'url_pdf': f"http://mahjoub:8134/web/content/{attachment.id}?download=true"
+            'url_pdf': f"https://c.hosgan.com/web/content/{attachment.id}?download=true"
         })
 
         # Envoi de l'email
