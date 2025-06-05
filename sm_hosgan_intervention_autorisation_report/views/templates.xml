@@ -1,0 +1,439 @@
+<odoo>
+    <data>
+        <record id="action_report_photo_authorization" model="ir.actions.report">
+            <field name="name">Autorisation DU TÉMOIGNAGE Photos</field>
+            <field name="model">report.autorisation</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sm_hosgan_intervention_autorisation_report.photo_authorization_report</field>
+            <field name="report_file">sm_hosgan_intervention_autorisation_report.photo_authorization_report</field>
+            <field name="print_report_name">'AUTORISATION D’UTILISATION DES PHOTOS AVANT ET APRÈS _' + object.partner_id.name.replace(" ", "_")
+            </field>
+        </record>
+
+        <template id="photo_authorization_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                        <div class="page">
+                            <h2 style="text-align: center; margin-bottom: 30px;">
+                                AUTORISATION D’UTILISATION DES PHOTOS AVANT ET APRÈS
+                            </h2>
+
+                            <p>
+                                Je, soussigné(e),
+                                <strong>
+                                    <span t-field="docs.partner_id.name"/>
+                                </strong>
+                                , né(e) le
+                                <strong>
+                                    <span t-field="docs.date_naissance"/>
+                                </strong>
+                                ,
+                                déclare par la présente autoriser <strong>HOSGAN Chirurgie Esthétique</strong> à
+                                utiliser mes photos avant et après l’intervention chirurgicale,
+                                sous les conditions suivantes :
+                            </p>
+
+                            <p>
+                                <strong>Conditions d’utilisation :</strong>
+                            </p>
+                            <ol>
+                                <li>
+                                    <strong>Anonymat garanti :</strong>
+                                    <ul>
+                                        <li>Mon visage, mes tatouages ou tout autre signe distinctif permettant de
+                                            m’identifier seront floutés ou masqués afin de garantir mon anonymat total.
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>Usage autorisé :</strong>
+                                    <ul>
+                                        <li>Les photos pourront être utilisées uniquement à des fins :
+                                            <ul>
+                                                <li>D’information et de sensibilisation auprès des futurs patients.</li>
+                                                <li>De promotion et de communication sur les réseaux sociaux (Instagram,
+                                                    Facebook, TikTok, etc.), le site web d’HOSGAN, ou dans des supports
+                                                    publicitaires ou informatifs.
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>Engagement de confidentialité :</strong>
+                                    <ul>
+                                        <li>En aucun cas, mes photos ne seront utilisées à d’autres fins que celles
+                                            mentionnées ci-dessus.
+                                        </li>
+                                        <li>Mon nom, prénom ou toute autre information personnelle ne seront jamais
+                                            divulgués.
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ol>
+
+                            <p>
+                                <strong>Droit de rétractation :</strong>
+                            </p>
+                            <p>
+                                Je comprends que je peux révoquer cette autorisation à tout moment, par une demande
+                                écrite adressée à HOSGAN Chirurgie Esthétique, et que cela n’affectera pas l’utilisation
+                                des photos déjà publiées avant la réception de ma demande.
+                            </p>
+
+                            <p>
+                                <strong>Acceptation des conditions :</strong>
+                            </p>
+                            <ul>
+                                <li>Avoir lu et compris les termes de cette autorisation.</li>
+                                <li>Donner mon consentement libre et éclairé pour l’utilisation de mes photos dans les
+                                    conditions définies ci-dessus.
+                                </li>
+                            </ul>
+
+                            <div style="margin-top: 40px;">
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td>
+                                            <p>
+                                                <strong>Signature du patient :</strong>
+                                            </p>
+                                            <p style="border-bottom: 1px solid #000; height: 40px;"></p>
+                                            <p>
+                                                <strong>Date :</strong>
+                                                <span/>
+
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p>
+                                                <strong>Signature du représentant d’HOSGAN :</strong>
+                                            </p>
+                                            <p style="border-bottom: 1px solid #000; height: 40px;"></p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div style="margin-top: 30px;">
+                                <p>
+                                    <strong>Cachet d’HOSGAN :</strong>
+                                </p>
+                                <p style="border: 1px dashed #000; height: 80px;"></p>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+
+        <record id="action_report_video_authorization" model="ir.actions.report">
+            <field name="name">Autorisation DU TÉMOIGNAGE VIDÉO</field>
+            <field name="model">report.autorisation</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sm_hosgan_intervention_autorisation_report.video_authorization_report</field>
+            <field name="report_file">sm_hosgan_intervention_autorisation_report.video_authorization_report</field>
+            <field name="print_report_name">'AUTORISATION D’UTILISATION DU TÉMOIGNAGE VIDÉO _' + object.partner_id.name.replace(" ", "_")
+            </field>
+        </record>
+
+        <template id="video_authorization_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                        <div class="page">
+
+                            <h2 style="text-align: center;">HOSGAN CHIRURGIE ESTHÉTIQUE</h2>
+                            <p style="text-align: right;">Date :
+
+                            </p>
+
+                            <h3 style="text-align: center; margin-top: 20px;">AUTORISATION D’UTILISATION DU TÉMOIGNAGE
+                                VIDÉO
+                            </h3>
+
+                            <p>
+                                Je, soussigné(e),
+                                <strong>
+                                    <span t-field="docs.partner_id.name"/>
+                                </strong>
+                                ,
+                                né(e) le
+                                <strong>
+                                    <span t-field="docs.date_naissance"/>
+                                </strong>
+                                ,
+                                autorise par la présente HOSGAN Chirurgie Esthétique à utiliser mon témoignage vidéo,
+                                enregistré à ma demande, aux conditions suivantes :
+                            </p>
+
+                            <h4>Options de confidentialité :</h4>
+                            <p>Veuillez cocher (✓) votre choix :</p>
+
+                            <ul>
+                                <li>
+                                    <strong>Option 1 : Témoignage avec anonymat</strong>
+                                    <br/>
+                                    Mon visage sera flouté et toute information permettant de m’identifier (tatouages,
+                                    signes distinctifs, etc.) sera masquée afin de garantir mon anonymat total.
+                                </li>
+                                <br/>
+                                <li>
+                                    <strong>Option 2 : Témoignage avec visage visible</strong>
+                                    <br/>
+                                    J’autorise HOSGAN à utiliser mon témoignage vidéo avec mon visage visible et
+                                    reconnaissable.
+                                </li>
+                            </ul>
+
+                            <h4>Usage autorisé :</h4>
+                            <ul>
+                                <li>Le témoignage vidéo pourra être utilisé à des fins :
+                                    <ul>
+                                        <li>D’information et de sensibilisation auprès des futurs patients.</li>
+                                        <li>De promotion et de communication sur les réseaux sociaux (Instagram,
+                                            Facebook, TikTok, etc.) et le site web de HOSGAN.
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <h4>Engagement de confidentialité :</h4>
+                            <ul>
+                                <li>Aucune autre information personnelle (nom, prénom, coordonnées) ne sera divulguée
+                                    sans mon accord explicite.
+                                </li>
+                                <li>Le contenu de mon témoignage ne sera pas modifié sans ma validation préalable.</li>
+                            </ul>
+
+                            <h4>Droit de rétractation :</h4>
+                            <p>
+                                Je comprends que je peux révoquer cette autorisation à tout moment, par une demande
+                                écrite adressée à HOSGAN Chirurgie Esthétique,
+                                et que cela n’affectera pas les vidéos déjà publiées avant la réception de ma demande.
+                            </p>
+
+                            <h4>Acceptation des conditions :</h4>
+                            <ul>
+                                <li>Avoir lu et compris les termes de cette autorisation.</li>
+                                <li>Donner mon consentement libre et éclairé pour l’utilisation de mon témoignage vidéo
+                                    selon l’option sélectionnée.
+                                </li>
+                            </ul>
+
+                            <br/>
+                            <br/>
+
+                            <table style="width:100%; margin-top: 30px;">
+                                <tr>
+                                    <td>
+                                        <strong>Signature du patient :</strong>
+                                        <br/>
+                                        ________________________
+                                    </td>
+                                    <td>
+                                        <strong>Date :</strong>
+                                        <br/>
+                                        ______________
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Signature du représentant de HOSGAN :</strong>
+                                        <br/>
+                                        _______________________
+                                    </td>
+                                    <td>
+                                        <strong>Timbre de HOSGAN :</strong>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+
+        <record id="action_report_consentement_necrose" model="ir.actions.report">
+            <field name="name">Consentement Éclairé Nécrose</field>
+            <field name="model">report.autorisation</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sm_hosgan_intervention_autorisation_report.report_consentement_necrose</field>
+            <field name="report_file">sm_hosgan_intervention_autorisation_report.report_consentement_necrose</field>
+            <field name="print_report_name">'CONSENTEMENT_ECLAIRE_NECROSE_' + object.partner_id.name.replace(" ", "_")</field>
+        </record>
+
+        <template id="report_consentement_necrose">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                        <div class="page">
+                            <h2 style="text-align: center;"><b>CONSENTEMENT ÉCLAIRÉ NÉCROSE</b></h2>
+                            <p style="text-align: center;"><b>CLINIQUE MYRON INTERNATIONAL</b><br/>Tunis</p>
+                            <p style="text-align: center;"><b>Dr. Taher Jmel</b></p>
+                            <p style="text-align: right;"><b>Date :</b> _______________________</p>
+
+                            <h3 style="text-align: center; margin-top: 20px;">DOCUMENT DE CONSENTEMENT ÉCLAIRÉ</h3>
+
+                            <p>
+                                Je, soussigné(e),
+                                <strong><span t-field="o.partner_id.name"/></strong>,
+                                né(e) le <strong><span t-field="o.date_naissance"/></strong>,
+                                déclare par la présente avoir été informé(e) en détail par le Dr. Taher Jmel des risques
+                                potentiels liés à une plastie abdominale associée à une liposuccion de l'abdomen.
+                            </p>
+
+                            <h4>Informations sur l’intervention :</h4>
+                            <ul>
+                                <li>Une plastie abdominale (abdominoplastie).</li>
+                                <li>Une liposuccion de l'abdomen.</li>
+                            </ul>
+
+                            <h4>Recommandation médicale :</h4>
+                            <p>Il m’a été conseillé, pour réduire les risques, d’effectuer :</p>
+                            <ul>
+                                <li>
+                                    La plastie abdominale et la liposuccion de l'abdomen séparément, à une distance
+                                    d’au moins 6 mois entre les deux interventions.
+                                </li>
+                            </ul>
+                            <p>
+                                Malgré cette recommandation, j’ai opté volontairement pour réaliser la plastie abdominale
+                                et la liposuccion de l’abdomen en une seule intervention.
+                            </p>
+
+                            <h4>Risques associés à l’intervention combinée :</h4>
+                            <ul>
+                                <li>Risque accru de nécrose cutanée (destruction localisée de la peau), nécessitant des soins supplémentaires ou une intervention chirurgicale secondaire.</li>
+                                <li>Risque accru de nécrose graisseuse (dégénérescence des tissus graisseux), avec des conséquences médicales ou esthétiques potentielles.</li>
+                                <li>Risques communs aux interventions chirurgicales : hématomes, infections, cicatrices anormales, asymétries, etc.</li>
+                            </ul>
+
+                            <h4>Consentement du patient :</h4>
+                            <ul>
+                                <li>J’ai lu et compris les explications fournies sur les risques spécifiques de cette intervention combinée.</li>
+                                <li>J’ai été informé(e) de l’option d’effectuer les interventions séparément et des avantages de cette approche en termes de sécurité.</li>
+                                <li>J’ai eu l’occasion de poser toutes mes questions et d’obtenir des réponses satisfaisantes.</li>
+                                <li>J’accepte de manière volontaire et éclairée de procéder à cette intervention combinée, en assumant les risques mentionnés.</li>
+                            </ul>
+
+                            <p>
+                                Je reconnais également que les résultats esthétiques peuvent varier selon les individus et
+                                qu’aucune garantie de résultat précis ne peut être donnée.
+                            </p>
+
+                            <p>
+                                En signant ce document, je confirme avoir pris connaissance des informations ci-dessus et
+                                accepte de manière éclairée les risques potentiels liés à l’intervention.
+                            </p>
+
+                            <br/><br/>
+                            <table style="width:100%;">
+                                <tr>
+                                    <td><b>Signature du patient :</b> ________________________</td>
+                                    <td><b>Date :</b> ______________</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><b>Signature du médecin (Dr. Taher Jmel) :</b> _______________________</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><b>Cachet de la clinique :</b></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+
+
+        <record id="action_report_consentement_transfusion" model="ir.actions.report">
+            <field name="name">Consentement Transfusion Sanguine</field>
+            <field name="model">report.autorisation</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sm_hosgan_intervention_autorisation_report.transfusion_consent_report</field>
+            <field name="report_file">sm_hosgan_intervention_autorisation_report.transfusion_consent_report</field>
+            <field name="print_report_name">'CONSENTEMENT TRANSFUSION SANGUINE _' + object.partner_id.name.replace(" ", "_")</field>
+        </record>
+
+        <template id="transfusion_consent_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                        <div class="page">
+                            <h2 style="text-align: center;">CLINIQUE MYRON INTERNATIONAL</h2>
+                            <p style="text-align: center;">Tunis</p>
+                            <p style="text-align: right;">Dr. Taher Jmel</p>
+                            <p style="text-align: right;">Date : __________________</p>
+
+                            <h3 style="text-align: center; margin-top: 20px;">DOCUMENT DE CONSENTEMENT POUR TRANSFUSION SANGUINE</h3>
+
+                            <p>
+                                Je, soussigné(e),
+                                <strong><span t-field="o.partner_id.name"/></strong>,
+                                né(e) le <strong><span t-field="o.date_naissance"/></strong>,
+                                déclare par la présente :
+                            </p>
+
+                            <h4>Informations générales :</h4>
+                            <p>
+                                Il m’a été expliqué par le Dr. Taher Jmel que dans le cadre d’une grande liposuccion, une transfusion sanguine pourrait être nécessaire durant l’intervention, après l’intervention, ou dans les deux cas, afin de :
+                            </p>
+                            <ul>
+                                <li>Compenser une perte importante de sang.</li>
+                                <li>Maintenir une stabilité hémodynamique et garantir ma sécurité pendant et après la chirurgie.</li>
+                            </ul>
+
+                            <h4>Consentement pour transfusion sanguine :</h4>
+                            <ul>
+                                <li>Je comprends qu’une transfusion sanguine sera effectuée uniquement si cela est médicalement nécessaire et dans le but de préserver ma santé et ma sécurité.</li>
+                                <li>Je suis informé(e) que le sang utilisé provient de donneurs certifiés, rigoureusement testé selon les normes en vigueur pour éviter tout risque de transmission d’infections.</li>
+                                <li>J’ai eu l’occasion de poser toutes mes questions sur les risques potentiels liés à une transfusion sanguine, y compris les réactions allergiques, les infections extrêmement rares et autres effets indésirables possibles.</li>
+                                <li>J’accepte, par la présente, d’être transfusé(e) si cela est jugé nécessaire par l’équipe médicale pendant ou après l’intervention.</li>
+                            </ul>
+
+                            <h4>Consentement général pour l’intervention :</h4>
+                            <ul>
+                                <li>J’ai lu et compris les explications sur l’intervention chirurgicale prévue, y compris les risques potentiels associés à la grande liposuccion.</li>
+                                <li>Je donne mon accord éclairé pour l’intervention chirurgicale et autorise l’équipe médicale à prendre toutes les mesures nécessaires pour garantir ma sécurité, y compris la réalisation d’une transfusion sanguine en cas de besoin.</li>
+                            </ul>
+
+                            <br/>
+                            <br/>
+
+                            <table style="width:100%; margin-top: 30px;">
+                                <tr>
+                                    <td>
+                                        <strong>Signature du patient :</strong><br/>
+                                        ________________________
+                                    </td>
+                                    <td>
+                                        <strong>Date :</strong><br/>
+                                        ______________
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Signature du médecin (Dr. Taher Jmel) :</strong><br/>
+                                        _______________________
+                                    </td>
+                                    <td>
+                                        <strong>Cachet de la clinique :</strong>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+
+    </data>
+</odoo>
