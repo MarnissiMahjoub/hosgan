@@ -145,9 +145,7 @@
                     <t t-call="web.internal_layout">
                         <div class="page">
 
-                            <p style="text-align: right;">Date :
 
-                            </p>
 
                             <h3 style="text-align: center; margin-top: 20px;">AUTORISATION D’UTILISATION DU TÉMOIGNAGE
                                 VIDÉO
@@ -272,7 +270,7 @@
                     <t t-call="web.internal_layout">
                         <div class="page">
                             <h2 style="text-align: center;"><b>CONSENTEMENT ÉCLAIRÉ NÉCROSE</b></h2>
-                            <p style="text-align: center;"><b>CLINIQUE MYRON INTERNATIONAL</b><br/>Tunis</p>
+<!--                            <p style="text-align: center;"><b>CLINIQUE MYRON INTERNATIONAL</b><br/>Tunis</p>-->
                             <p style="text-align: center;"><b>Dr. Taher Jmel</b></p>
                             <p style="text-align: right;"><b>Date :</b> _______________________</p>
 
@@ -365,8 +363,8 @@
                 <t t-foreach="docs" t-as="o">
                     <t t-call="web.internal_layout">
                         <div class="page">
-                            <h2 style="text-align: center;">CLINIQUE MYRON INTERNATIONAL</h2>
-                            <p style="text-align: center;">Tunis</p>
+<!--                            <h2 style="text-align: center;">CLINIQUE MYRON INTERNATIONAL</h2>-->
+<!--                            <p style="text-align: center;">Tunis</p>-->
                             <p style="text-align: right;">Dr. Taher Jmel</p>
                             <p style="text-align: right;">Date : __________________</p>
 
