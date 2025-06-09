@@ -47,8 +47,11 @@ class sm_hosgan_intervention_autorisation_report(models.Model):
             email_subject = "Autorisation d’utilisation des photos avant/après"
             email_body = """
                 <p>Bonjour {name},</p>
-                <p>Veuillez trouver ci-joint le document à signer concernant l'utilisation de vos photos avant/après. Merci de le lire attentivement.</p>
+                <p>Pour compléter votre dossier, nous vous demandons de signer l'autorisation d'usage des
+photos avant et après votre intervention.</p>
+                <p>Merci de votre collaboration et à très bientôt.</p>
                 <p>Cordialement.</p>
+                <p>L’équipe HOSGAN.</p>
             """.format(name=self.partner_id.name)
 
         elif self.report_selection == "video_testimony":
@@ -57,8 +60,11 @@ class sm_hosgan_intervention_autorisation_report(models.Model):
             email_subject = "Autorisation d’utilisation de témoignage vidéo"
             email_body = """
                 <p>Bonjour {name},</p>
-                <p>Veuillez trouver ci-joint le document à signer pour autoriser l'utilisation de votre témoignage vidéo. Merci de le lire attentivement et de nous le retourner signé.</p>
+                <p>Nous vous remercions pour votre confiance! Pour partager votre expérience, nous vous
+demandons de signer l'autorisation d'usage des vidéos témoignage.</p>
+                            <p>Merci de votre collaboration et à très bientôt..</p>
                 <p>Cordialement.</p>
+                <p>L’équipe HOSGAN.</p>
             """.format(name=self.partner_id.name)
 
         elif self.report_selection == "transfusion_consent":
