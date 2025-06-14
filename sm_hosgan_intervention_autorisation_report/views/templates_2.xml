@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <record id="action_report_feedback" model="ir.actions.report">
+            <field name="name">Formulaire de Feedback</field>
+            <field name="model">report.autorisation</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sm_hosgan_intervention_autorisation_report.feedback_report</field>
+            <field name="report_file">sm_hosgan_intervention_autorisation_report.feedback_report</field>
+            <field name="print_report_name">'FEEDBACK_' + doc.partner_id.name.replace(" ", "_")</field>
+        </record>
+
+        <template id="feedback_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                       <t t-call="web.internal_layout">
+                    <div class="page">
+                        <t t-if="doc.partner_id.lang in ('fr_FR', 'fr')">
+                            <h2 style="text-align:center;">Formulaire de Feedback</h2>
+                            <p>Cher(e) Patient(e),</p>
+                            <p>
+                                Nous tenons à vous remercier sincèrement pour la confiance que vous nous avez accordée
+                                en choisissant nos services.
+                                Afin de continuer à améliorer la qualité de notre accompagnement et à offrir des soins
+                                toujours plus adaptés à vos attentes,
+                                nous vous invitons à remplir ce court questionnaire de satisfaction.
+                            </p>
+                            <p>
+                                Vos avis et vos suggestions sont précieux pour nous permettre de perfectionner chaque
+                                étape de votre séjour et de garantir un service à la hauteur de vos attentes.
+                            </p>
+                            <p>
+                                Nous vous remercions par avance pour le temps que vous consacrerez à nous faire part de
+                                votre expérience.
+                            </p>
+                            <p>Avec toute notre gratitude et nos salutations les plus distinguées,
+                                <br/>
+                                L'équipe HOSGAN
+                            </p>
+
+                            <p>
+                                <strong>1. Chauffeur :</strong>
+                            </p>
+                            <ul>
+                                <li>Conduite</li>
+                                <li>Propreté</li>
+                                <li>Courtoisie</li>
+                            </ul>
+                            <p>
+                                <strong>2. Clinique :</strong>
+                            </p>
+                            <ul>
+                                <li>Chirurgien</li>
+                                <li>Infirmières</li>
+                                <li>Propreté</li>
+                            </ul>
+                            <p>
+                                <strong>3. Hôtel / Appart :</strong>
+                            </p>
+                            <ul>
+                                <li>Confort</li>
+                                <li>Services</li>
+                                <li>Propreté</li>
+                            </ul>
+                            <p>
+                                <strong>4. Assistance :</strong>
+                            </p>
+                            <ul>
+                                <li>Professionnalisme</li>
+                                <li>Disponibilité</li>
+                                <li>Courtoisie</li>
+                            </ul>
+                            <p>
+                                <strong>5. Conseiller :</strong>
+                            </p>
+                            <ul>
+                                <li>Préparation</li>
+                                <li>Disponibilité</li>
+                                <li>Courtoisie</li>
+                            </ul>
+                        </t>
+
+                        <t t-if="doc.partner_id.lang in ('it_IT', 'it')">
+                            <h2 style="text-align:center;">Questionario di Soddisfazione</h2>
+                            <p>Gentile Paziente,</p>
+                            <p>
+                                Desideriamo ringraziarla sinceramente per la fiducia che ci ha accordato scegliendo i
+                                nostri servizi.
+                                Per continuare a migliorare la qualità della nostra assistenza e offrire cure sempre più
+                                adatte alle sue esigenze,
+                                la invitiamo a compilare questo breve questionario di soddisfazione.
+                            </p>
+                            <p>
+                                Le sue opinioni e i suoi suggerimenti sono preziosi per permetterci di perfezionare ogni
+                                fase del suo soggiorno e garantire un servizio all'altezza delle sue aspettative.
+                            </p>
+                            <p>
+                                La ringraziamo in anticipo per il tempo che ci dedicherà condividendo la sua esperienza.
+                            </p>
+                            <p>Con tutta la nostra gratitudine e i nostri più cordiali saluti,
+                                <br/>
+                                L’équipe HOSGAN
+                            </p>
+
+                            <p>
+                                <strong>1. Autista:</strong>
+                            </p>
+                            <ul>
+                                <li>Guida</li>
+                                <li>Pulizia</li>
+                                <li>Cortesia</li>
+                            </ul>
+                            <p>
+                                <strong>2. Clinica:</strong>
+                            </p>
+                            <ul>
+                                <li>Chirurgo</li>
+                                <li>Infermiere</li>
+                                <li>Pulizia</li>
+                            </ul>
+                            <p>
+                                <strong>3. Hotel / Appartamento:</strong>
+                            </p>
+                            <ul>
+                                <li>Confort</li>
+                                <li>Servizi</li>
+                                <li>Pulizia</li>
+                            </ul>
+                            <p>
+                                <strong>4. Assistenza:</strong>
+                            </p>
+                            <ul>
+                                <li>Professionalità</li>
+                                <li>Disponibilità</li>
+                                <li>Cortesia</li>
+                            </ul>
+                            <p>
+                                <strong>5. Consulente:</strong>
+                            </p>
+                            <ul>
+                                <li>Preparazione</li>
+                                <li>Disponibilità</li>
+                                <li>Cortesia</li>
+                            </ul>
+                        </t>
+                    </div>
+                       </t>
+                </t>
+            </t>
+        </template>
+
+        <record id="action_report_medical_file_receipt" model="ir.actions.report">
+            <field name="name">Confirmation de Réception du Dossier Médical</field>
+            <field name="model">report.autorisation</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sm_hosgan_intervention_autorisation_report.medical_file_receipt_report</field>
+            <field name="report_file">sm_hosgan_intervention_autorisation_report.medical_file_receipt_report</field>
+            <field name="print_report_name">'RECEPTION_DOSSIER_MEDICAL_' + (object.partner_id.name or '').replace(" ",
+                "_")
+            </field>
+        </record>
+
+        <template id="medical_file_receipt_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                       <t t-call="web.internal_layout">
+                    <div class="page">
+                        <t t-if="doc.partner_id.lang in ('it_IT', 'it')">
+                            <h2 style="text-align: center;">CONFERMA DI RICEZIONE DELLA DOCUMENTAZIONE MEDICA</h2>
+                            <p>
+                                Io sottoscritto/a, Sig.ra/Sig. ___________________________________________,
+                                <br/>
+                                nato/a il ____________________________,
+                                <br/>
+                                titolare del passaporto/Carta d'Identità n° __________________________,
+                                <br/>
+                                dichiaro con la presente di aver ricevuto personalmente la documentazione medica
+                                completa che comprende i seguenti documenti:
+                            </p>
+                            <ul>
+                                <li>Analisi biologiche</li>
+                                <li>TAC</li>
+                                <li>Ecografia addominale</li>
+                                <li>ECG (Elettrocardiogramma)</li>
+                                <li>Tessera delle protesi mammarie</li>
+                                <li>Referto medico</li>
+                                <li>Esami NFS (Emocromo Completo)</li>
+                                <li>Cross-match del sangue</li>
+                                <li>Raccomandazioni post-operatorie</li>
+                                <li>Consenso informato firmato</li>
+                                <li>Scheda tecnica dell’intervento</li>
+                            </ul>
+                            <p>
+                                Firmando questo documento confermo di aver preso visione di tutti i documenti sopra
+                                elencati,
+                                di averne compreso il contenuto e di aver avuto l'opportunità di porre tutte le domande
+                                necessarie a riguardo.
+                            </p>
+                            <p>
+                                Fatto a ______________________________, il ________________________________
+                                <br/>
+                                Firma del paziente:
+                            </p>
+                        </t>
+
+                        <t t-if="doc.partner_id.lang in ('fr_FR', 'fr')">
+                            <h2 style="text-align: center;">CONFIRMATION DE RÉCEPTION DU DOSSIER MÉDICAL</h2>
+                            <p>
+                                Je soussigné(e), Mme/M. ___________________________________________,
+                                <br/>
+                                né(e) le ____________________________,
+                                <br/>
+                                titulaire du passeport/CIN n° __________________________,
+                                <br/>
+                                déclare par la présente avoir reçu, en main propre, mon dossier médical complet
+                                comprenant les documents suivants :
+                            </p>
+                            <ul>
+                                <li>Bilan biologique</li>
+                                <li>Scanner</li>
+                                <li>Échographie abdominale</li>
+                                <li>ECG (Électrocardiogramme)</li>
+                                <li>Carte des prothèses mammaires</li>
+                                <li>Compte rendu médical</li>
+                                <li>Examens NFS (Numération Formule Sanguine)</li>
+                                <li>Cross-match sanguin</li>
+                                <li>Recommandations post-opératoires</li>
+                                <li>Consentement éclairé signé</li>
+                                <li>Fiche technique d’intervention</li>
+                            </ul>
+                            <p>
+                                En signant ce document, je confirme avoir bien pris connaissance de l’ensemble des
+                                documents mentionnés ci-dessus,
+                                les avoir compris et avoir eu la possibilité de poser toutes les questions nécessaires à
+                                leur sujet.
+                            </p>
+                            <p>
+                                Fait à ______________________________, le ________________________________
+                                <br/>
+                                Signature du patient :
+                            </p>
+                        </t>
+                    </div>
+                       </t>
+                </t>
+            </t>
+        </template>
+</odoo>
